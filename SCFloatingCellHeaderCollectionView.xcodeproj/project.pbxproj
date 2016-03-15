@@ -14,6 +14,7 @@
 		5817163A1C984B3100B697B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 581716381C984B3100B697B2 /* LaunchScreen.storyboard */; };
 		581716481C984C5100B697B2 /* SCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581716461C984C5100B697B2 /* SCMainViewController.m */; };
 		5817164B1C984CC100B697B2 /* SCFloatingCellHeaderCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5817164A1C984CC100B697B2 /* SCFloatingCellHeaderCollectionView.m */; };
+		5817164F1C9852A800B697B2 /* XLPlainFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5817164E1C9852A800B697B2 /* XLPlainFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		581716461C984C5100B697B2 /* SCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMainViewController.m; sourceTree = "<group>"; };
 		581716491C984CC100B697B2 /* SCFloatingCellHeaderCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFloatingCellHeaderCollectionView.h; sourceTree = "<group>"; };
 		5817164A1C984CC100B697B2 /* SCFloatingCellHeaderCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFloatingCellHeaderCollectionView.m; sourceTree = "<group>"; };
+		5817164D1C9852A800B697B2 /* XLPlainFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPlainFlowLayout.h; sourceTree = "<group>"; };
+		5817164E1C9852A800B697B2 /* XLPlainFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPlainFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +97,20 @@
 		581716471C984C5100B697B2 /* SCFloatingCellHeaderCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				5817164C1C9852A800B697B2 /* XLPlainFlowLayout */,
 				581716491C984CC100B697B2 /* SCFloatingCellHeaderCollectionView.h */,
 				5817164A1C984CC100B697B2 /* SCFloatingCellHeaderCollectionView.m */,
 			);
 			path = SCFloatingCellHeaderCollectionView;
+			sourceTree = "<group>";
+		};
+		5817164C1C9852A800B697B2 /* XLPlainFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				5817164D1C9852A800B697B2 /* XLPlainFlowLayout.h */,
+				5817164E1C9852A800B697B2 /* XLPlainFlowLayout.m */,
+			);
+			path = XLPlainFlowLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +187,7 @@
 			files = (
 				5817164B1C984CC100B697B2 /* SCFloatingCellHeaderCollectionView.m in Sources */,
 				5817162F1C984B3100B697B2 /* AppDelegate.m in Sources */,
+				5817164F1C9852A800B697B2 /* XLPlainFlowLayout.m in Sources */,
 				5817162C1C984B3100B697B2 /* main.m in Sources */,
 				581716481C984C5100B697B2 /* SCMainViewController.m in Sources */,
 			);

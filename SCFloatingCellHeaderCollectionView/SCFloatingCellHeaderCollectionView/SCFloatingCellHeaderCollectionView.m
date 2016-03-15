@@ -7,7 +7,7 @@
 //
 
 #import "SCFloatingCellHeaderCollectionView.h"
-#import "SCCollectionViewFloatingHeaderLayout.h"
+#import "XLPlainFlowLayout/XLPlainFlowLayout.h"
 
 NSString *const SCCollectionElementKindSectionHeader = @"SCCollectionElementKindSectionHeader";
 NSString *const SCCollectionElementKindSectionFooter = @"SCCollectionElementKindSectionFooter";
@@ -71,7 +71,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 
 #pragma mark - **************************** Private Methods *************************** -
 - (UICollectionViewLayout *)p_layout {
-    SCCollectionViewFloatingHeaderLayout *layout = [SCCollectionViewFloatingHeaderLayout new];
+    XLPlainFlowLayout *layout = [XLPlainFlowLayout new];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     return layout;
 }
@@ -535,16 +535,16 @@ static CGFloat const kDefaultCellHeight = 44.0;
 }
 
 - (void)sc_addBottomSeparator  {
-    [self p_addSpeparatorWithOriginY:self.height - POINTS_FROM_PIXELS(0.5)];
+    [self p_addSpeparatorWithOriginY:self.bounds.size.height - 0.5];
 }
 
 - (void)p_addSpeparatorWithOriginY:(CGFloat)originY {
-    UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, originY, self.width, POINTS_FROM_PIXELS(0.5))];
+    UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, originY, self.bounds.size.width, 0.5)];
     bottomLine.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
                                   UIViewAutoresizingFlexibleRightMargin |
                                   UIViewAutoresizingFlexibleTopMargin |
                                   UIViewAutoresizingFlexibleBottomMargin;
-    bottomLine.backgroundColor = [UIColor colorWithHexString:@"#e8e8e8"];
+    bottomLine.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:bottomLine];
 }
 
