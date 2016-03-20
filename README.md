@@ -1,8 +1,11 @@
-# SCFloatingCellHeaderCollectionView
-A custom UICollectionView wrapper with floating/stickey "cell" header effect, and it has UICollectionView-like API.
+# SCStickyCellHeaderCollectionView
+A custom UICollectionView wrapper with stickey "cell" header effect, and it has UICollectionView-like API.
 
 
-* **Important: SCFloatingCellHeaderCollectionView is not a subclass of UICollectionView, it inherits from UIView directly.**
+* **Important: SCStickeyCellHeaderCollectionView is not a subclass of UICollectionView, it inherits from UIView directly.**
+
+###Preview
+
 
 
 ###Thanks

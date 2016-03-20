@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  SCFloatingCellHeaderCollectionView
+//  SCStickyCellHeaderCollectionView
 //
-//  Created by ShannonChen on 16/3/15.
+//  Created by ShannonChen on 16/3/20.
 //  Copyright © 2016年 meitun. All rights reserved.
 //
 
@@ -17,12 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[SCMainViewController new]];
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
 

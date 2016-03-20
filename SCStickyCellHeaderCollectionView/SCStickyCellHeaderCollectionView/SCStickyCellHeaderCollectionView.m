@@ -1,20 +1,20 @@
 //
-//  SCFloatingCellHeaderCollectionView.m
+//  SCStickyCellHeaderCollectionView.m
 //  pregnancy
 //
 //  Created by ShannonChen on 16/3/7.
 //  Copyright © 2016年 babytree. All rights reserved.
 //
 
-#import "SCFloatingCellHeaderCollectionView.h"
-#import "XLPlainFlowLayout/XLPlainFlowLayout.h"
+#import "SCStickyCellHeaderCollectionView.h"
+#import "XLPlainFlowLayout.h"
 
 NSString *const SCCollectionElementKindSectionHeader = @"SCCollectionElementKindSectionHeader";
 NSString *const SCCollectionElementKindSectionFooter = @"SCCollectionElementKindSectionFooter";
 NSString *const SCCollectionElementKindCellHeader = @"SCCollectionElementKindCellHeader";
 NSString *const SCCollectionElementKindSectionBottomSpacing = @"SCCollectionElementKindSectionBottomSpacing";
 
-@interface SCFloatingCellHeaderCollectionView () 
+@interface SCStickyCellHeaderCollectionView () 
 
 @property (nonatomic, strong) NSMutableDictionary <NSIndexPath * , NSIndexPath *>*fakeRealIndexPathMapper;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber * , NSIndexPath *>*fakeRealSectionHeaderMapper;
@@ -28,11 +28,11 @@ NSString *const SCCollectionElementKindSectionBottomSpacing = @"SCCollectionElem
 
 @end
 
-@implementation SCFloatingCellHeaderCollectionView
+@implementation SCStickyCellHeaderCollectionView
 
-static NSString *const kDefaultCellIdentifier = @"kSCFCHCollectionViewCellIdentifier";
-static NSString *const kDefaultSectionHeaderIdentifier = @"kSCFCHCollectionViewSectionHeaderIdentifier";
-static NSString *const kDefaultSectionFooterIdentifier = @"kSCFCHCollectionViewSectionFooterIdentifier";
+static NSString *const kDefaultCellIdentifier = @"kSCSCHCollectionViewCellIdentifier";
+static NSString *const kDefaultSectionHeaderIdentifier = @"kSCSCHCollectionViewSectionHeaderIdentifier";
+static NSString *const kDefaultSectionFooterIdentifier = @"kSCSCHCollectionViewSectionFooterIdentifier";
 static CGFloat const kDefaultCellHeight = 44.0;
 
 
@@ -80,7 +80,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
     
     /* 算出所提供的indexPath 对应collectionView的哪个item(section)
      
-            SCFloatingCellHeaderCollectionView                  UICollectionView
+            SCStickyCellHeaderCollectionView                  UICollectionView
                      │===============│                           |===============|
         section      │ sectionHeader │     ------------>         | item(section) |    indexPath.section
                      │===============│                           |———————————————|
@@ -181,7 +181,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 }
 
 // Either the header or footer for a section
-- (SCFCHCollectionViewHeaderFooter *)dequeueReusableSectionHeaderFooterOfKind:(NSString *)elementKind withReuseIdentifier:(NSString *)identifier inSection:(NSInteger)section {
+- (SCSCHCollectionViewHeaderFooter *)dequeueReusableSectionHeaderFooterOfKind:(NSString *)elementKind withReuseIdentifier:(NSString *)identifier inSection:(NSInteger)section {
     if (elementKind == SCCollectionElementKindSectionHeader) {
 
         return [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:self.fakeRealSectionHeaderMapper[@(section)]];
@@ -196,7 +196,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 }
 
 //  Cell header
-- (SCFCHCollectionViewReusableView *)dequeueReusableCellSupplementaryViewOfKind:(NSString *)elementKind withReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath {
+- (SCSCHCollectionViewReusableView *)dequeueReusableCellSupplementaryViewOfKind:(NSString *)elementKind withReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath {
 
     if (elementKind == SCCollectionElementKindCellHeader) {
         return [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:identifier forIndexPath:self.fakeRealIndexPathMapper[indexPath]];
@@ -207,7 +207,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 }
 
 // The bottom spacing for a section
-- (SCFCHCollectionViewReusableView *)dequeueReusableSectionSupplementaryViewOfKind:(NSString *)elementKind withReuseIdentifier:(NSString *)identifier inSection:(NSInteger)section {
+- (SCSCHCollectionViewReusableView *)dequeueReusableSectionSupplementaryViewOfKind:(NSString *)elementKind withReuseIdentifier:(NSString *)identifier inSection:(NSInteger)section {
     
     NSInteger lastRowIdx = 0;
     NSIndexPath *realIndexPath = nil;
@@ -252,7 +252,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     /* 算出与sectionHeader、row和sectionFooter对应的，共有多少个item
      
-         SCFloatingCellHeaderCollectionView                  UICollectionView
+         SCStickyCellHeaderCollectionView                  UICollectionView
               _______________                             _______________
              | sectionHeader |     ------------>         | item(section) |
              |———————————————|                           |———————————————|
@@ -278,7 +278,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     /* 算出当前indexPath.item 对应哪个section的哪个row
      
-        SCFloatingCellHeaderCollectionView                  UICollectionView
+        SCStickyCellHeaderCollectionView                  UICollectionView
                  _______________                             _______________
                 | sectionHeader |     ------------>         | item(section) |
                 |———————————————|                           |———————————————|
@@ -336,7 +336,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
 
     /* 算出当前indexPath 对应哪个section的哪个row
-     SCFloatingCellHeaderCollectionView                  UICollectionView
+     SCStickyCellHeaderCollectionView                    UICollectionView
              |===============|                           |===============|
              | sectionHeader |     ------------>         | item(section) |    indexPath.section
              |===============|                           |———————————————|
@@ -577,16 +577,16 @@ static CGFloat const kDefaultCellHeight = 44.0;
 
 
 
-#pragma mark - @implementation SCFCHCollectionViewCell -
+#pragma mark - @implementation SCSCHCollectionViewCell -
 //_______________________________________________________________________________________________________________
 
-@implementation SCFCHCollectionViewCell
+@implementation SCSCHCollectionViewCell
 @end
-#pragma mark - @implementation SCFCHCollectionViewHeaderFooter -
-@implementation SCFCHCollectionViewHeaderFooter
+#pragma mark - @implementation SCSCHCollectionViewHeaderFooter -
+@implementation SCSCHCollectionViewHeaderFooter
 @end
-#pragma mark - @implementation SCFCHCollectionViewReusableView -
-@implementation SCFCHCollectionViewReusableView
+#pragma mark - @implementation SCSCHCollectionViewReusableView -
+@implementation SCSCHCollectionViewReusableView
 @end
 
 
@@ -594,6 +594,7 @@ static CGFloat const kDefaultCellHeight = 44.0;
 #pragma mark - @implementation UIView (SCSeparator) -
 //_______________________________________________________________________________________________________________
 
+static CGFloat const kSeparatorHeight = 0.5;
 @implementation UIView (SCSeparator)
 
 - (void)sc_addTopSeparator {
@@ -601,17 +602,14 @@ static CGFloat const kDefaultCellHeight = 44.0;
 }
 
 - (void)sc_addBottomSeparator  {
-    [self p_addSpeparatorWithOriginY:self.bounds.size.height - 0.5];
+    [self p_addSpeparatorWithOriginY:self.bounds.size.height - kSeparatorHeight];
 }
 
 - (void)p_addSpeparatorWithOriginY:(CGFloat)originY {
-    UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, originY, self.bounds.size.width, 0.5)];
-    bottomLine.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
-                                  UIViewAutoresizingFlexibleRightMargin |
-                                  UIViewAutoresizingFlexibleTopMargin |
-                                  UIViewAutoresizingFlexibleBottomMargin;
-    bottomLine.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:bottomLine];
+    UIView *speparator = [[UIView alloc] initWithFrame:CGRectMake(0, originY, self.bounds.size.width, kSeparatorHeight)];
+    speparator.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    speparator.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:speparator];
 }
 
 @end

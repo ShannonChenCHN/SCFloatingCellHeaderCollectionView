@@ -1,8 +1,8 @@
 //
 //  main.m
-//  SCFloatingCellHeaderCollectionView
+//  SCStickyCellHeaderCollectionView
 //
-//  Created by ShannonChen on 16/3/15.
+//  Created by ShannonChen on 16/3/20.
 //  Copyright © 2016年 meitun. All rights reserved.
 //
 

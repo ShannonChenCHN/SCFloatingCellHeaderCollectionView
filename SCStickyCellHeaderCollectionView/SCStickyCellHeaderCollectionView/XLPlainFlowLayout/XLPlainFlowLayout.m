@@ -107,9 +107,13 @@
             //针对当前header基本上都是offset更加大，针对下一个header则会是headerY大，各自处理
             CGFloat maxY = MAX(offset,headerY);
             
+#warning    modified by Shannon Chen
+            // 获取当前header所在分区的footer高度
+            UICollectionViewLayoutAttributes *footerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter atIndexPath:attributes.indexPath];
+            
             //最后一个cell的y值 + 最后一个cell的高度 + 可能存在的sectionInset的bottom - 当前header的高度
             //当当前section的footer或者下一个section的header接触到当前header的底部，计算出的headerMissingY即为有效值
-            CGFloat headerMissingY = CGRectGetMaxY(lastItemAttributes.frame) + self.sectionInset.bottom - rect.size.height;
+            CGFloat headerMissingY = CGRectGetMaxY(lastItemAttributes.frame) + self.sectionInset.bottom - rect.size.height + footerAttributes.frame.size.height;
             
             //给rect的y赋新值，因为在最后消失的临界点要跟谁消失，所以取小
             rect.origin.y = MIN(maxY,headerMissingY);
@@ -118,7 +122,8 @@
             
             //如果按照正常情况下,header离开屏幕被系统回收，而header的层次关系又与cell相等，如果不去理会，会出现cell在header上面的情况
             //通过打印可以知道cell的层次关系zIndex数值为0，我们可以将header的zIndex设置成1，如果不放心，也可以将它设置成非常大，这里随便填了个7
-            attributes.zIndex = 7;
+#warning modified by Shannon Chen
+            attributes.zIndex = NSIntegerMax;
         }
     }
     
