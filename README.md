@@ -13,7 +13,9 @@ A custom UICollectionView wrapper with stickey "cell" header effect, and it has 
 Drag the files from the Source folder into your project.
 
 ### Usage
-1. Register cells and supplementary views in your ViewController.The custom cells could inherit from UICollectionViewCell directly, but the header or footer for a section must inherit from SCSCHCollectionViewHeaderFooter. Plus, cell header and the bottom section spacing for a section must inherit from SCSCHCollectionViewReusableView.
+1.Register cells and supplementary views in your ViewController.
+
+- The custom cells could inherit from UICollectionViewCell directly, but the header or footer for a section must inherit from SCSCHCollectionViewHeaderFooter. Plus, cell header and the bottom section spacing for a section must inherit from SCSCHCollectionViewReusableView.
 
         - (void)viewDidLoad {
          [super viewDidLoad];
@@ -24,6 +26,8 @@ Drag the files from the Source folder into your project.
          _collectionViewContainer.delegate = self;
          _collectionViewContainer.dataSource = self;
         [self.view addSubview:_collectionViewContainer];
+        
+        // register
         [_collectionViewContainer registerClass:[SCSectionHeader class] forSupplementaryViewOfKind:SCCollectionElementKindSectionHeader withReuseIdentifier:kSCSectionHeaderIdentifier];
         [_collectionViewContainer registerClass:[SCCellHeader class] forSupplementaryViewOfKind:SCCollectionElementKindCellHeader  withReuseIdentifier:kSCCellHeaderIdentifier];
         [_collectionViewContainer registerClass:[SCCell class] forCellWithReuseIdentifier:kSCCellIdentifier];
@@ -31,9 +35,9 @@ Drag the files from the Source folder into your project.
         [_collectionViewContainer registerClass:[SCSectionSpacing class] forSupplementaryViewOfKind:SCCollectionElementKindSectionBottomSpacing  withReuseIdentifier:kSCSectionSpacingIdentifier];
         }
         
-2. Implement SCStickyCellHeaderCollectionViewDataSource and  SCStickyCellHeaderCollectionViewDelegate.
+2.Implement SCStickyCellHeaderCollectionViewDataSource and  SCStickyCellHeaderCollectionViewDelegate.
  
-3. Use - reloadData to reload data for collection view, **you should never call the method -realoadData of property 'collectionView' directly.**
+3.Use - reloadData to reload data for collection view, **you should never call the method -realoadData of property 'collectionView' directly.**
  		
  		[self.collectionViewContainer reloadData];  √
  		[self.collectionViewContainer.collectionView reloadData];  ×
